@@ -1,7 +1,5 @@
 {
-  description = "standard elixir devShell w/ postgres";
-
-  #inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
+  description = "tooter elixir devent and package";
 
   outputs = { self, nixpkgs }:
     let
@@ -18,7 +16,8 @@
               beam.packages.erlang_27.elixir_1_17
               git
               erlang
-              postgresql_16
+              # postgresql_16
+              sqlite
             ]) ++
           # Linux only
           pkgs.lib.optionals (pkgs.stdenv.isLinux) (with pkgs; [ inotify-tools libnotify ]) ++
@@ -27,7 +26,7 @@
           pkgs.lib.optionals (pkgs.stdenv.isDarwin) (with pkgs.darwin.apple_sdk.frameworks; [ CoreFoundation CoreServices ]);
 
           shellHook = ''
-            export PGDATA="$PWD/db"
+            # export PGDATA="$PWD/db"
             export PATH="$HOME/.mix/escripts:$PWD/bin:$PATH"
           '';
         };
