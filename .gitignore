@@ -35,5 +35,7 @@ tooter-*.tar
 npm-debug.log
 /assets/node_modules/
 
-.direnv
-/db/
+# Database files
+*.db
+*.db-*
+
